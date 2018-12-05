@@ -3,20 +3,22 @@
 namespace WidgetsBurritos\DrupalPatchChecker;
 
 use Composer\Composer;
+use Composer\IO\IOInterface;
+use Composer\Plugin\PluginInterface;
 use Composer\Script\Event;
 
 /**
  * Checks to see if patches contain hook_update_N().
  */
-class DrupalPatchChecker {
+class DrupalPatchChecker implements PluginInterface {
 
   /** @var Composer */
   protected $composer;
 
   /**
-   * __construct().
+   * Activates our patch checker.
    */
-  public function __construct(Composer $composer) {
+  public function activate(Composer $composer, IOInterface $io) {
     $this->composer = $composer;
   }
 
@@ -32,15 +34,9 @@ class DrupalPatchChecker {
    * @param Event $event
    */
   public static function checkComposerFile(Event $event) {
-    $checker = new static($event->getComposer());
-    return $checker->__invoke();
-  }
-
-  /**
-   * __invoke().
-   */
-  public function __invoke() {
-    $this->parsePatches();
+    $checker = new static();
+    $checker->activate($event->getComposer(), $event->getIO());
+    return $checker->parsePatches();
   }
 
   /**
