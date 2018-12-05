@@ -54,7 +54,7 @@ class DrupalPatchChecker implements PluginInterface {
           $patched_package = $matches[0];
           $package_name = preg_quote($matches[1]);
           foreach ($patch_info as $description => $file) {
-            $patch_lines = array_merge($patch_lines, $this->checkPatchForHookUpdateN($file, $package_name));
+            $patch_lines = array_merge($patch_lines, $this->checkPatchFileForHookUpdateN($file, $package_name));
           }
         }
       }
