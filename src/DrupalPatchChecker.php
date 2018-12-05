@@ -12,7 +12,6 @@ use Composer\Script\Event;
  */
 class DrupalPatchChecker implements PluginInterface {
 
-  /** @var Composer */
   protected $composer;
 
   /**
@@ -23,7 +22,7 @@ class DrupalPatchChecker implements PluginInterface {
   }
 
   /**
-   * checkComposerFile is the main method of the checker script.
+   * The main method of the checker script.
    *
    * It looks for any drupal modules installed and their corresponding
    * patches to determine if the patches contain new hook_update_N() references.
@@ -31,7 +30,8 @@ class DrupalPatchChecker implements PluginInterface {
    * You need to invoke it from the scripts section of your
    * "composer.json" file as "post-install-cmd" or "post-update-cmd".
    *
-   * @param Event $event
+   * @param \Composer\Script\Event $event
+   *   Composer event.
    */
   public static function checkComposerFile(Event $event) {
     $checker = new static();
@@ -67,15 +67,34 @@ class DrupalPatchChecker implements PluginInterface {
   /**
    * Checks specified patch file for hook_update_N().
    *
-   * @param $file string
+   * @param string $file
    *   Relative path to patch from composer base.
+   * @param string $package_name
+   *   Package name.
    *
    * @return array
    *   List of lines where hook_update_N() is defined.
    */
-  public function checkPatchForHookUpdateN($file, $package_name) {
+  public function checkPatchFileForHookUpdateN($file, $package_name) {
     $cwd = getcwd();
     $contents = file("{$cwd}/{$file}");
+    return $this->checkPatchFileArrayForHookUpdateN($contents, $file, $package_name);
+  }
+
+  /**
+   * Checks specified patch file for hook_update_N().
+   *
+   * @param array $contents
+   *   Patch file contents split by line in an array.
+   * @param string $file
+   *   Relative path to patch from composer base.
+   * @param string $package_name
+   *   Name of the module.
+   *
+   * @return array
+   *   List of lines where hook_update_N() is defined.
+   */
+  public function checkPatchFileArrayForHookUpdateN(array $contents, $file, $package_name) {
     $regex = "|^\+\s*function\s+{$package_name}_update_\d+|";
     $patch_lines = [];
     foreach ($contents as $num => $line) {
