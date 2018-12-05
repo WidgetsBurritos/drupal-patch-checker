@@ -17,5 +17,9 @@
     },
     "extra": {
         "class": "WidgetsBurritos\\DrupalPatchChecker\\DrupalPatchChecker"
+    },
+    "require": {
+        "composer-plugin-api": "^1.0.0",
+        "composer/semver": "^1.4"
     }
 }
