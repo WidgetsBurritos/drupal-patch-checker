@@ -1,0 +1,18 @@
+{
+    "name": "widgetsburritos/drupal-patch-checker",
+    "description": "A simple helper script for checking composer dependencies to ensure it's not adding hook_update_N() functions via patches.",
+    "type": "composer-plugin",
+    "license": "GPL-3.0-or-later",
+    "version": "0.1.0",
+    "authors": [
+        {
+            "name": "David Stinemetze",
+            "email": "davidstinemetze@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "WidgetsBurritos\\DrupalPatchChecker\\": "src/"
+        }
+    }
+}
