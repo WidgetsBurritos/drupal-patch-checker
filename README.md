@@ -4,7 +4,7 @@ A simple helper script for checking composer dependencies to ensure it's not add
 
 ## Why This Exists
 
-I recently realized that [using patches containing hook_update_N() is risky](https://www.widgetsandburritos.com/posts/2018-12-07/patching-production-drupal-sites-hook-update-n-risky). Long story short, it could potentially create conflicts with other module updates, meaning some update hooks may never run at all. This can create have some negative effects down the road. This script helps preempt those issues.
+I recently realized that [using patches containing hook_update_N() is risky](https://www.widgetsandburritos.com/posts/2018-12-07/patching-production-drupal-sites-hook-update-n-risky). Long story short, it could potentially create conflicts with other module updates, meaning some update hooks may never run at all. This can have some negative effects down the road. This script helps preempt those issues.
 
 ## First Time Setup
 Install this package as a dev dependency:
