@@ -10,7 +10,8 @@ use Composer\Script\Event;
 /**
  * Checks to see if patches contain hook_update_N().
  */
-class DrupalPatchChecker implements PluginInterface {
+class DrupalPatchChecker implements PluginInterface
+{
 
   protected $composer;
 

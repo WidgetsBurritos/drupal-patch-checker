@@ -26,7 +26,7 @@ class DrupalPatchCheckerUnitTest extends TestCase {
     $expected = [
       'myfile.patch contains hook_update_N() on Line 2.',
       'myfile.patch contains hook_update_N() on Line 3.',
-      'myfile.patch contains hook_update_N() on Line 4.',
+      'myfile.patch contains hook_update_N() on Line 6.',
     ];
     $this->assertEquals($expected, $actual);
   }
