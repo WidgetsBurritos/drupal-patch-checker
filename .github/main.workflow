@@ -1,21 +1,21 @@
-workflow "Test Readiness" {
+workflow "Main Workflow" {
   on = "push"
   resolves = [
-    "test",
-    "phpcs",
+    "Code Style Analysis",
+    "Unit Tests",
   ]
 }
 
-action "./action-build/" {
-  uses = "./action-build/"
+action "Build" {
+  uses = "./actions/build"
 }
 
-action "test" {
-  uses = "./action-test"
-  needs = ["./action-build/"]
+action "Unit Tests" {
+  uses = "./actions/test"
+  needs = ["Build"]
 }
 
-action "phpcs" {
-  uses = "./action-phpcs"
-  needs = ["./action-build/"]
+action "Code Style Analysis" {
+  uses = "./actions/phpcs"
+  needs = ["Build"]
 }
