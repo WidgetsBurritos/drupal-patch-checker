@@ -1,6 +1,4 @@
 #!/bin/sh -l
 
-# set -eu
-sh -c "echo $*"
-#composer install
-#composer run test
+sh -c "echo 'Running unit tests'"
+composer run test

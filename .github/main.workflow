@@ -1,12 +1,21 @@
 workflow "Test Readiness" {
   on = "push"
-  resolves = ["action-phpcs", "action-test"]
+  resolves = [
+    "test",
+    "phpcs",
+  ]
 }
 
-action "action-phpcs" {
-  uses = "./action-phpcs/"
+action "./action-build/" {
+  uses = "./action-build/"
 }
 
-action "action-test" {
-  uses = "./action-test/"
+action "test" {
+  uses = "./action-test"
+  needs = ["./action-build/"]
+}
+
+action "phpcs" {
+  uses = "./action-phpcs"
+  needs = ["./action-build/"]
 }
