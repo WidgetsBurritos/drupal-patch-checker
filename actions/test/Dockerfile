@@ -1,4 +1,4 @@
-FROM composer:latest
+FROM php:7.2
 
 LABEL "com.github.actions.name"="test"
 LABEL "com.github.actions.description"="Performs phpunit tests"

@@ -1,4 +1,4 @@
 #!/bin/sh -l
 
 sh -c "echo 'Running code style analysis'"
-composer run phpcs
+vendor/bin/phpcs --standard=vendor/drupal/coder/coder_sniffer/Drupal/ruleset.xml src/ tests/
