@@ -1,5 +1,4 @@
 #!/bin/sh -l
 
-set -eu
-sh -c "echo $*"
+sh -c "echo 'Build the project'"
 composer install
