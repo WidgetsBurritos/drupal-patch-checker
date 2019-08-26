@@ -8,7 +8,6 @@ workflow "Main Workflow" {
 
 action "Build" {
   uses = "./actions/build"
-  secrets = ["SUPER_SECRET_KEY"]
 }
 
 action "Unit Tests" {
