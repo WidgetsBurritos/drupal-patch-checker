@@ -1,5 +1,6 @@
-on: push
 name: Main Workflow
+on: [push, pull_request]
+
 jobs:
   build:
     name: Build
@@ -12,3 +13,4 @@ jobs:
       uses: ./actions/test
     - name: Code Style Analysis
       uses: ./actions/phpcs
+
