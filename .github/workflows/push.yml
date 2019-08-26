@@ -1,0 +1,14 @@
+on: push
+name: Main Workflow
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Build
+      uses: ./actions/build
+    - name: Unit Tests
+      uses: ./actions/test
+    - name: Code Style Analysis
+      uses: ./actions/phpcs
