@@ -17,7 +17,7 @@ class DrupalPatchCheckerUnitTest extends TestCase {
       '@@@ function specialmodule_update_8001() {',
       '-function specialmodule_update_8002() {',
       '+function specialmodule_update_8003() {',
-      '+function       specialmodule_update_8004   ()    {',
+      '+This should fail now.',
       '+function specialmodule_update_8005',
       '+function specialmodule_update_NOTVALID() {',
       '+function someothermodule_update_8006() {',
@@ -30,5 +30,9 @@ class DrupalPatchCheckerUnitTest extends TestCase {
     ];
     $this->assertEquals($expected, $actual);
   }
+
+
+
+
 
 }
