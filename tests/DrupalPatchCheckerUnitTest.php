@@ -16,7 +16,7 @@ class DrupalPatchCheckerUnitTest extends TestCase {
     $contents = [
       '@@@ function specialmodule_update_8001() {',
       '-function specialmodule_update_8002() {',
-      '+function specialmodule_update_8003() {',
+      '+This should fail now...',
       '+function       specialmodule_update_8004   ()    {',
       '+function specialmodule_update_8005',
       '+function specialmodule_update_NOTVALID() {',
