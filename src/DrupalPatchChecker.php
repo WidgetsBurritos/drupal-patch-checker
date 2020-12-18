@@ -12,6 +12,11 @@ use Composer\Script\Event;
  */
 class DrupalPatchChecker implements PluginInterface {
 
+  /**
+   * The Composer service.
+   *
+   * @var \Composer\Composer
+   */
   protected $composer;
 
   /**
@@ -19,6 +24,18 @@ class DrupalPatchChecker implements PluginInterface {
    */
   public function activate(Composer $composer, IOInterface $io) {
     $this->composer = $composer;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function deactivate(Composer $composer, IOInterface $io) {
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function uninstall(Composer $composer, IOInterface $io) {
   }
 
   /**
